@@ -1,0 +1,130 @@
+﻿@model privoda.Models.ModelLine
+@{
+    ViewData["Title"] = "Line";
+}
+<head>
+    <title>Линейки приводов</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="margin col-lg-10 col-lg-offset-1">
+                <div class="line-box line col-lg-12">
+                    <div class="col-lg-3">
+                        <img class="img-responsive" src="~/images/lines/@Model.Image" alt="@Model.Name" />
+                    </div>
+                    <div class="col-lg-6 col-lg-offset-3 text-right">
+                        <div class="line-box-title"><b>@Model.Name</b></div>
+                        <p class="small">
+                            *обширное описание*
+                        </p>
+                        <p class="">
+                            Привод, пригодный для нагрузки транспортов, фасовочных машин, текстильных, подъемные, нагнетатели,
+                            обработка материалов и ещё немного покопипащу для обширности
+                        </p>
+                        <p class="">
+                            U/f по 2 точкам_U/f по 5 точкам_Векторное управление потоком в разомкнутой системе(энергосберегающий и обычный)_U/f квадратичный
+                        </p>
+                        <!--<a href="#" class="btn btn-primary">Заказать</a>->>
+                    <!-- Trigger the modal with a button -->
+                        <a class="btn btn-info btn-primary" data-toggle="modal" data-target="#myModal">Заказать</a>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="inputName">Как к вам обращаться?</label>
+                                                <input type="text" class="form-control" id="inputName" placeholder="" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputOrganization">Организация</label>
+                                                <input type="text" class="form-control" id="inputOrganization" placeholder="Введите вашу организацию" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputStatus">Должность</label>
+                                                <input type="text" class="form-control" id="inputStatus" placeholder="Введите занимаемую вами должность" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputStatus">E-mail</label>
+                                                <input type="text" class="form-control" id="inputStatus" placeholder="Введите эл. почту для отправки комерческого предложения" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputStatus">Телефон</label>
+                                                <input type="text" class="form-control" id="inputStatus" placeholder="Введите ваш контактный номер телефона" />
+                                            </div>
+                                            <button type="submit" class="btn btn-default">Отправить</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hUYEBc2kjZs" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>-->
+        <div class="row">
+            <div style="text-align: center;">
+                <b>Характеристики</b>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                Выходная частота
+                            </td>
+                            <td>
+                                @Model.OutputFrequency
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Начальные скорости
+                            </td>
+                            <td>
+                                @Model.PresetSpeeds
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Степень защиты
+                            </td>
+                            <td>
+                                @Model.Protection
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Кол. защитных функции
+                            </td>
+                            <td>
+                                @Model.SecurityFeatures
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>

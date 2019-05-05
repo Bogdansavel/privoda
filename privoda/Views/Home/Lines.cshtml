@@ -1,0 +1,35 @@
+﻿@model IEnumerable<privoda.Models.ModelLine>
+@{
+//Layout = null;
+}
+
+<html>
+<head>
+    <title>Линейки приводов</title>
+</head>
+<body>
+    <div class="container">
+        <div clas="row">
+            <div style="text-align: center;">
+                <h1>Линейки приводов</h1>
+            </div>
+            @foreach (var line in Model)
+            {<div class="row">
+                    <div class="margin col-lg-10 col-lg-offset-1 col-sm-1">
+                        <div class="line-box one-line col-lg-12">
+                            <div class="col-lg-3">
+                                <img class="img-responsive" src="~/images/lines/@line.Image" alt="@line.Name" />
+                            </div>
+                            <div class="col-lg-offset-3 text-right">
+                                <div class="line-box-title"><b>@line.Name</b></div>
+                                <p class="small">Какое-либо длинное описание <br> линейки приводов ...</p>
+                                <a href="~/Home/Line/@line.Id" class="btn btn-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

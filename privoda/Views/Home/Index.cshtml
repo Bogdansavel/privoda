@@ -1,0 +1,108 @@
+﻿@model IEnumerable<privoda.Models.ModelLine>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<html>
+<head>
+    <title>Домашняя</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="main-slider" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                    <li data-target="#main-slider" data-slide-to="1"></li>
+                    <li data-target="#main-slider" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner carousel-fade">
+                    <div class="item active">
+                        <img class="img" src="~/images/programming2.png" alt="programming">
+                        <div class="carousel-caption">
+                            <h1>Программирование</h1>
+                            Наша компания занимается программированием обородувания и всё в этом духе
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img class="img-responsive" src="~/images/training.png" alt="training">
+                        <div class="carousel-caption">
+                            <h1>Обучение</h1>
+                            Наши специалисты проводят проф. обучение работе с приводами ...
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img class="img-responsive" src="~/images/delivery.png" alt="delivery">
+                        <div class="carousel-caption">
+                            <h1>Доставка</h1>
+                            Мы доставляем технику в любую точку Беларуси, но это не точно ...
+                        </div>
+                    </div>
+                </div>
+
+                <a class="left carousel-control" href="#main-slider" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#main-slider" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 green-block">
+            <div class="col-lg-6 green-block-text">
+                    <b>Altivar - преобразователь частоты</b>
+                <p>
+                    <small>
+                            Частотный преобразователь Altivar – устройство, управляющее скоростью вращения электродвигателя, и преобразующее
+                            трехфазное или однофазное напряжения (стандартная частота 50 Гц) в трехфазное напряжение определенной частоты.
+                    </small>
+                </p>
+            </div>
+            <div class="col-lg-offset-8">
+                <img class="img-responsive" src="~/images/LifeIsOn.png" alt="" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row main-content">
+            <div style="text-align: center;">
+                <b>Новейшие линейки приводов</b>
+            </div>
+            <div class="new-lines-box row">
+                @for (int i = 0; i < 4; i++)
+                {
+                    <div class="margin col-lg-6 col-sm-1">
+                        <div class="line-box one-line col-lg-12">
+                            <div class="col-lg-3">
+                                <img class="img-responsive" src="~/images/lines/@Model.ElementAt(i).Image" alt="@Model.ElementAt(i).Name" />
+                            </div>
+                            <div class="col-lg-offset-3 text-right">
+                                <div class="line-box-title"><b>@Model.ElementAt(i).Name</b></div>
+                                <p class="small">Какое-либо короткое описание <br> линейки приводов ...</p>
+                                <a href="~/Home/Line/@Model.ElementAt(i).Id" class="btn btn-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="row">
+                <div class="text-center">
+                    <a asp-area="" asp-controller="Home" asp-action="Lines" class="btn btn-default">Все линейки</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>

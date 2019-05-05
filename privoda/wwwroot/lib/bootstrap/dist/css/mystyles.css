@@ -1,0 +1,130 @@
+@import "bootstrap.css";
+
+body {
+	font-family: Calibri;
+	font-size: 190%;
+}
+
+.navbar-inverse {
+	background-color: #00bb53;
+	border-color: #00bb53;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+}
+
+.navbar-inverse .nav > li > a:hover, .navbar-inverse .nav > li > a:focus {
+	color: #e6e6e6;
+}
+
+.navbar-inverse .nav > li > a {
+	color: #ffffff;
+}
+
+#main-slider {
+	margin-top: 1%;
+}
+
+
+.navbar-brand{
+	font-size: 150%;
+}
+
+/*
+.navbar-nav {
+	font-size: 130%;
+}
+*/
+
+.navbar-toggle {
+  background-color: none;
+  background-image: none;
+  border: none;
+  border-radius: none;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: none;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: none;
+}
+
+.carousel-item .img-responsive {
+  width:100%;
+  height: 100%;
+}
+
+.main-content {
+	margin-top: 2%;
+}
+
+.line-box-title {
+	font-size: 200%;
+}
+
+
+/*пока не используется*/
+.line-image {
+	height: 100%;
+	width: 100%;	
+}
+
+.new-lines-box {
+	margin: 2% 0%;
+}
+
+.one-line {
+	/*border: 1px solid #d6d3d3;
+	*/padding: 5%;
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+	background-color: #00bb53;
+	border: none;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #00bb53;
+  border-color: none;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #00bb53;
+  border-color: none;
+}
+
+.margin {
+	padding: 1%;
+}
+
+.line {
+	padding: 3%;
+}
+
+table {
+	margin-top: 5%;
+}
+
+.green-block {
+	margin-top: 1%;
+	background-color: #00bb53;
+	height: 10%;
+	color: white;
+}
+
+.green-block-text {
+	padding: 2.5%;
+	padding-left: 10%; 
+	font-size: 100%;
+}
