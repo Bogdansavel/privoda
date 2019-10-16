@@ -1,35 +1,100 @@
-﻿@model IEnumerable<privoda.Models.ModelLine>
+﻿@using privoda.ViewModels
+@model IndexViewModel
 @{
-//Layout = null;
+    ViewData["Title"] = "Преобразователи частоты";
 }
 
 <html>
 <head>
-    <title>Линейки приводов</title>
+    <title>Преобразователи частоты</title>
 </head>
 <body>
     <div class="container">
         <div clas="row">
             <div style="text-align: center;">
-                <h1>Линейки приводов</h1>
+                <h1>Преобразователи частоты</h1>
             </div>
-            @foreach (var line in Model)
-            {<div class="row">
-                    <div class="margin col-lg-10 col-lg-offset-1 col-sm-1">
-                        <div class="line-box one-line col-lg-12">
-                            <div class="col-lg-3">
-                                <img class="img-responsive" src="~/images/lines/@line.Image" alt="@line.Name" />
-                            </div>
-                            <div class="col-lg-offset-3 text-right">
-                                <div class="line-box-title"><b>@line.Name</b></div>
-                                <p class="small">Какое-либо длинное описание <br> линейки приводов ...</p>
-                                <a href="~/Home/Line/@line.Id" class="btn btn-primary">Подробнее</a>
-                            </div>
-                        </div>
+            @foreach (var type in Model.LineTypes)
+            {
+                <div class="text-center line-type">
+                    <a name="@type.Name">
+                        <img src="~/images/types/@type.Image" alt="@type.Name" />
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="text-center" style="margin-bottom: 1%;">
+                        @type.Name
                     </div>
                 </div>
+                @foreach (ModelLine line in Model.ModelLines)
+                {
+                    if (line.TypeId == type.Id)
+                    {
+                        <div class="row">
+                            <div class="margin col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+                                <div class="line-box one-line col-lg-12 col-md-12">
+                                    <div class="line-image col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <img class="img-responsive" src="~/images/lines/@line.Image" alt="@line.Name" />
+                                    </div>
+                                    <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 text-right">
+                                        <div class="line-box-title"><b>@line.Name</b></div>
+                                        <a class="btn btn-primary" data-toggle="tab" href="#menu1_@line.Id">Особенности</a>
+                                        <a class="btn btn-primary" data-toggle="tab" href="#menu2_@line.Id">Области</a>
+                                        <div class="tab-content">
+                                            <div id="menu1_@line.Id" class="text-left tab-pane fade in active">
+                                                <ul>
+                                                    @foreach (Description desc in Model.Descriptions)
+                                                    {
+                                                        if (desc.LineId == line.Id)
+                                                        {
+                                                            @foreach (string s in desc.getMiniAverageList())
+                                                            {
+                                                                <li>
+                                                                    <div style="margin: 2%;">
+                                                                        <p style="font-size: 80%">@s</p>
+                                                                    </div>
+                                                                </li>
+
+                                                            }
+                                                        }
+                                                    }
+                                                </ul>
+
+                                            </div>
+                                            <div id="menu2_@line.Id" class="text-left tab-pane fade">
+                                                <div id="menu1" class="tab-pane fade in active">
+                                                    <ul>
+                                                        @foreach (Description desc in Model.Descriptions)
+                                                        {
+                                                            if (desc.LineId == line.Id)
+                                                            {
+                                                                @foreach (string s in desc.getMiniAreasList())
+                                                                {
+                                                                    <li>
+                                                                        <div style="margin: 2%;">
+                                                                            <p style="font-size: 80%">@s</p>
+                                                                        </div>
+                                                                    </li>
+
+                                                                }
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="~/Home/Line/@line.Id" class="btn btn-primary">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
             }
         </div>
     </div>
 </body>
 </html>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>

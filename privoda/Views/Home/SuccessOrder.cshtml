@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Успешный заказ";
+}
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <img class="success-img" src="~/images/success.png" />
+        </div>
+        <h2>Заказ оформлен успешно!</h2>
+        <p>
+            Спасибо за оформления заказа на privoda.by<br />
+            Через некоторое время с вами свяжутся наши специалисты.
+        </p>
+        <p>
+            Заказ @ViewBag.LineName
+        </p>
+        <a href="Index" class="btn btn-default">На главную</a>
+    </div>
+</body>
+

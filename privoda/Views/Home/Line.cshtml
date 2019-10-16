@@ -1,70 +1,67 @@
-﻿@model privoda.Models.ModelLine
+﻿@model privoda.ViewModels.LineViewModel
 @{
-    ViewData["Title"] = "Line";
+    ViewData["Title"] = Model.Line.Name;
 }
 <head>
     <title>Линейки приводов</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="margin col-lg-10 col-lg-offset-1">
+            <div class="col-lg-10 col-lg-offset-1">
                 <div class="line-box line col-lg-12">
-                    <div class="col-lg-3">
-                        <img class="img-responsive" src="~/images/lines/@Model.Image" alt="@Model.Name" />
+                    <div class="line-image text-center col-lg-3" style="margin-right: 10%;">
+                        <img class="img-responsive" src="~/images/lines/@Model.Line.Image" alt="@Model.Line.Name" />
                     </div>
-                    <div class="col-lg-6 col-lg-offset-3 text-right">
-                        <div class="line-box-title"><b>@Model.Name</b></div>
-                        <p class="small">
-                            *обширное описание*
+                    <div class="text-right">
+                        <div class="line-box-title"><b>@Model.Line.Name</b></div>
+                        <p class="text-left">
+                            @Model.Description.Small<br>
                         </p>
-                        <p class="">
-                            Привод, пригодный для нагрузки транспортов, фасовочных машин, текстильных, подъемные, нагнетатели,
-                            обработка материалов и ещё немного покопипащу для обширности
-                        </p>
-                        <p class="">
-                            U/f по 2 точкам_U/f по 5 точкам_Векторное управление потоком в разомкнутой системе(энергосберегающий и обычный)_U/f квадратичный
-                        </p>
-                        <!--<a href="#" class="btn btn-primary">Заказать</a>->>
-                    <!-- Trigger the modal with a button -->
-                        <a class="btn btn-info btn-primary" data-toggle="modal" data-target="#myModal">Заказать</a>
+                            @foreach (string s in Model.Description.getBigList())
+                            {
+                                <p class="features text-left">@s</p>
+                            }
+                        <a class="btn btn-info btn-primary buy-btn" data-toggle="modal" data-target="#orderModal">Заказать</a>
 
                         <!-- Modal -->
-                        <div id="myModal" class="modal fade" role="dialog">
+                        <div id="orderModal" class="modal fade text-left" role="dialog">
                             <div class="modal-dialog">
 
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div style="text-align: left">Оформление заявки на заказ</div>
                                     </div>
                                     <div class="modal-body">
 
-                                        <form role="form">
+                                        <form role="form" asp-area="" asp-controller="Home" asp-action="Order">
                                             <div class="form-group">
                                                 <label for="inputName">Как к вам обращаться?</label>
-                                                <input type="text" class="form-control" id="inputName" placeholder="" />
+                                                <input type="text" class="form-control" id="inputName" name="name" placeholder="" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputOrganization">Организация</label>
-                                                <input type="text" class="form-control" id="inputOrganization" placeholder="Введите вашу организацию" />
+                                                <input type="text" class="form-control" id="inputOrganization" name="org" placeholder="Введите вашу организацию" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputStatus">Должность</label>
-                                                <input type="text" class="form-control" id="inputStatus" placeholder="Введите занимаемую вами должность" />
+                                                <input type="text" class="form-control" id="inputStatus" name="post" placeholder="Введите занимаемую вами должность" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputStatus">E-mail</label>
-                                                <input type="text" class="form-control" id="inputStatus" placeholder="Введите эл. почту для отправки комерческого предложения" />
+                                                <input type="email" class="form-control" id="inputStatus" name="email" placeholder="Введите эл. почту для отправки комерческого предложения" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputStatus">Телефон</label>
-                                                <input type="text" class="form-control" id="inputStatus" placeholder="Введите ваш контактный номер телефона" />
+                                                <input type="tel" class="form-control" id="inputStatus" name="phone" placeholder="Введите ваш контактный номер телефона" required />
                                             </div>
-                                            <button type="submit" class="btn btn-default">Отправить</button>
+                                            <div class="text-right">
+                                                <input type="hidden" name="lineId" value="@Model.Line.Id">
+                                                <button type="submit" class="btn btn-default">Отправить</button>
+                                            </div>
                                         </form>
-                                    </div>
-                                    <div class="modal-footer">
                                     </div>
                                 </div>
 
@@ -74,57 +71,50 @@
                 </div>
             </div>
         </div>
-        <!--<div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hUYEBc2kjZs" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>-->
         <div class="row">
-            <div style="text-align: center;">
-                <b>Характеристики</b>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <table class="table">
-                        <tr>
-                            <td>
-                                Выходная частота
-                            </td>
-                            <td>
-                                @Model.OutputFrequency
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Начальные скорости
-                            </td>
-                            <td>
-                                @Model.PresetSpeeds
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Степень защиты
-                            </td>
-                            <td>
-                                @Model.Protection
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Кол. защитных функции
-                            </td>
-                            <td>
-                                @Model.SecurityFeatures
-                            </td>
-                        </tr>
-                    </table>
+            <div class="col-lg-10 col-lg-offset-1 line-footer">
+                <div class="col-lg-7 line-footer">
+                    <p>
+                        Области применения<br>
+                    </p>
+                    <ul>
+                        @foreach (string s in Model.Description.getAreasList())
+                        {
+                            <li class="features">@s</li>
+                        }
+                    </ul>
                 </div>
+                @if (Model.Line.Video != null)
+                {
+                    <div class="col-lg-5">
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@Model.Line.Video" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
-</body>
+    @if (ViewBag.Documents.Count > 0)
+    {
+        <div class="container">
+            <div class="row">
+                <div style="padding-top: 1%;">
+                    <div style="font-size: 150%;">
+                        <b>Документация:</b>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                @foreach (String doc in ViewBag.Documents)
+                {
+                    <li>
+                        <a href="~/documents/@Model.Line.Name/@doc" target="_blank" title="@doc">@doc</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    </body>
 <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

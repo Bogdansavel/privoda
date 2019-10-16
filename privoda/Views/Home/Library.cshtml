@@ -1,0 +1,25 @@
+﻿@model List<String>
+@{
+    ViewData["Title"] = "Библиотека";
+}
+
+<html>
+<head>
+    <title>Библиотека</title>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 2%">
+            <h1>Библиотека</h1>
+        </div>
+        <ul>
+            @foreach (String file in Model)
+            {
+                <li><a href="~/documents/Библиотека/@file" target="_blank">@file</a></li>
+            }
+        </ul>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>

@@ -12665,11 +12665,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\privoda\\privoda-project\\privoda\\privoda\\privoda.csproj",
+      "projectUniqueName": "D:\\privodaRepo\\privoda\\privoda\\privoda.csproj",
       "projectName": "privoda",
-      "projectPath": "D:\\privoda\\privoda-project\\privoda\\privoda\\privoda.csproj",
+      "projectPath": "D:\\privodaRepo\\privoda\\privoda\\privoda.csproj",
       "packagesPath": "C:\\Users\\bogda\\.nuget\\packages\\",
-      "outputPath": "D:\\privoda\\privoda-project\\privoda\\privoda\\obj\\",
+      "outputPath": "D:\\privodaRepo\\privoda\\privoda\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
