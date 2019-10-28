@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using privoda.Models;
 using privoda.Utils;
+using privoda.Utils.ReCaptchaV2;
 using privoda.ViewModels;
 
 namespace privoda.Controllers
@@ -43,6 +44,12 @@ namespace privoda.Controllers
 
         public IActionResult Order(string name, string org, string post, string email, string phone, int lineId)
         {
+            string captchaResponse = HttpContext.Request.Form["g-Recaptcha-Response"];
+            ReCaptchaValidationResult result = ReCaptchaValidator.IsValid(captchaResponse);
+            if (!result.Success)
+            {
+                return RedirectToAction("Index");
+            }
             ModelLine line = db.ModelLines.FirstOrDefault(p => p.Id == lineId);
             Email emailUtil = new Email(config.Value);
             emailUtil.sendOrder(name, org, post, email, phone, line);
@@ -58,6 +65,12 @@ namespace privoda.Controllers
 
         public IActionResult Select(string normal, string hard, string workSequences, string inputOrganization, string power, string current, string speed, string cos, string problem, string email)
         {
+            string captchaResponse = HttpContext.Request.Form["g-Recaptcha-Response"];
+            ReCaptchaValidationResult result = ReCaptchaValidator.IsValid(captchaResponse);
+            if (!result.Success)
+            {
+                return RedirectToAction("Index");
+            }
             Email emailUtil = new Email(config.Value);
             emailUtil.sendSelect(normal, hard, workSequences, inputOrganization, power, current, speed, cos, problem, email);
             return RedirectToAction("SuccessSelect");

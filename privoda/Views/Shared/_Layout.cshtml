@@ -124,8 +124,12 @@
                             <label for="inputStatus">E-mail</label>
                             <input type="email" class="form-control" id="inputStatus" name="email" placeholder="Введите контактный адресс эл. почты" required />
                         </div>
+                        <div class="g-recaptcha"
+                             data-callback="recaptchaCallback"
+                             data-sitekey="6Lde1r4UAAAAALjc45fRCMTWcQd7euopVl0KSxfU">
+                        </div>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-default">Отправить</button>
+                            <button id="submitBtn" type="submit" class="btn btn-default" disabled>Отправить</button>
                         </div>
                     </form>
                 </div>
@@ -140,7 +144,7 @@
     <footer>
         <hr />
         <div class="container">
-            <br/>
+            <br />
             <p>Контактная информация:</p>
             <p>
                 Отдел продаж: 8(029)642-06-37<br />
@@ -149,11 +153,12 @@
                 Почта технического отдела: service@profes.by
             </p>
             <br />
-        <br />
+            <br />
         </div>
     </footer>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

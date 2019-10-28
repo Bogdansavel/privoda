@@ -57,9 +57,13 @@
                                                 <label for="inputStatus">Телефон</label>
                                                 <input type="tel" class="form-control" id="inputStatus" name="phone" placeholder="Введите ваш контактный номер телефона" required />
                                             </div>
+                                            <div class="g-recaptcha"
+                                                 data-callback="orderRecaptchaCallback"
+                                                 data-sitekey="6Lde1r4UAAAAALjc45fRCMTWcQd7euopVl0KSxfU">
+                                            </div>
                                             <div class="text-right">
                                                 <input type="hidden" name="lineId" value="@Model.Line.Id">
-                                                <button type="submit" class="btn btn-default">Отправить</button>
+                                                <button id="orderSubmitBtn" type="submit" class="btn btn-default" disabled>Отправить</button>
                                             </div>
                                         </form>
                                     </div>

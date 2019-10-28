@@ -2,6 +2,15 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+function recaptchaCallback() {
+  $('#submitBtn').removeAttr('disabled');
+};
+
+
+function orderRecaptchaCallback() {
+  $('#orderSubmitBtn').removeAttr('disabled');
+};
+
 function dropNormalSelectFunction() {
     normal_select = document.getElementById('normal');
     normal_select.options[0].selected = true;

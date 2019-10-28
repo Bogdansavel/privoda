@@ -47,11 +47,11 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 green-block">
             <div class="col-lg-6 col-sm-6 green-block-text">
-                    <b>Altivar - преобразователь частоты</b>
+                <b>Altivar - преобразователь частоты</b>
                 <p>
                     <small>
-                            Частотный преобразователь Altivar – устройство, управляющее скоростью вращения электродвигателя, и преобразующее
-                            трехфазное или однофазное напряжения (стандартная частота 50 Гц) в трехфазное напряжение определенной частоты.
+                        Частотный преобразователь Altivar – устройство, управляющее скоростью вращения электродвигателя, и преобразующее
+                        трехфазное или однофазное напряжения (стандартная частота 50 Гц) в трехфазное напряжение определенной частоты.
                     </small>
                 </p>
             </div>
@@ -69,34 +69,34 @@
             <div class="new-lines-box row">
                 @foreach (LineType type in Model.LineTypes)
                 {
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div style="text-align: center;">
-                        @type.Name
-                    </div>
-                    <div class="text-center">
-                        <a href="~/Home/Lines#@type.Name">
-                            <img class="type-img" src="~/images/types/@type.Image" alt="@type.Name" />
-                        </a>
-                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div style="text-align: center;">
+                            @type.Name
+                        </div>
+                        <div class="text-center">
+                            <a href="~/Home/Lines#@type.Name">
+                                <img class="type-img" src="~/images/types/@type.Image" alt="@type.Name" />
+                            </a>
+                        </div>
 
-                    @foreach (ModelLine line in Model.ModelLines)
-                    {
-                        if (line.TypeId == type.Id)
+                        @foreach (ModelLine line in Model.ModelLines)
                         {
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 main-line">
-                                @foreach (Description description in Model.Descriptions)
-                                {
-                                    if (description.LineId == line.Id)
+                            if (line.TypeId == type.Id)
+                            {
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 main-line">
+                                    @foreach (Description description in Model.Descriptions)
                                     {
-                                        <a href="~/Home/Line/@line.Id" title="@description.Small">
-                                            <b>@line.Name</b>
-                                        </a>
+                                        if (description.LineId == line.Id)
+                                        {
+                                            <a href="~/Home/Line/@line.Id" title="@description.Small">
+                                                <b>@line.Name</b>
+                                            </a>
+                                        }
                                     }
-                                }
-                            </div>
+                                </div>
+                            }
                         }
-                    }
-                </div>
+                    </div>
                 }
             </div>
 
@@ -106,6 +106,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row" style="text-align: center;">
+        <img class="schema-img" src="~/images/SchemaWithLines.png" />
     </div>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

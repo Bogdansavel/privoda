@@ -179,7 +179,11 @@ table {
 
     .carousel-indicators {
     	display: none;
-    }
+	}
+	
+	.schema-img {
+		display: none;
+	}
 }
 
 .main-line {
@@ -293,4 +297,8 @@ footer p {
 
 .buy-btn {
 	font-size: 100%;
+}
+
+.schema-img {
+	width: 60%;
 }
