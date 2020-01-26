@@ -16,6 +16,32 @@ namespace privoda.Models
 
         private static char delimiter = '*'; 
 
+        public string[] getShortVersionOfBigDesc()
+        {
+            string[] big = getBigList();
+            string[] shortVersionOfBig = { "", "", "", "" };
+            if (big.Length < 4)
+            {
+                return big;
+            }
+            else
+            {
+                Array.Copy(big, shortVersionOfBig, 4);
+                return shortVersionOfBig;
+            }
+        }
+
+        public IEnumerable<string> getRestOfBigDesc()
+        {
+            List<string> big = new List<string>();
+            string[] list = getBigList();
+            for (int i = 4; i < list.Length; i++)
+            {
+                big.Add(list[i]);
+            }
+            return big;
+        }
+
         public string[] getAverageList()
         {
             return Average.Split(delimiter);

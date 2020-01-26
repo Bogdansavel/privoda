@@ -18,10 +18,17 @@
                         <p class="text-left">
                             @Model.Description.Small<br>
                         </p>
-                            @foreach (string s in Model.Description.getBigList())
+                        @foreach (string s in Model.Description.getShortVersionOfBigDesc())
+                        {
+                            <p class="features text-left">@s</p>
+                        }
+                        <span id="more">
+                            @foreach (string s in Model.Description.getRestOfBigDesc())
                             {
                                 <p class="features text-left">@s</p>
                             }
+                        </span>
+                        <button class="btn" onclick="myFunction()" id="myBtn">Подробнее</button>
                         <a class="btn btn-info btn-primary buy-btn" data-toggle="modal" data-target="#orderModal">Заказать</a>
 
                         <!-- Modal -->
@@ -122,3 +129,4 @@
     </body>
 <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/scripts.js"></script>
