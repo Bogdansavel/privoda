@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using privoda.Models;
+using privoda.Services;
 using privoda.Utils;
 using privoda.Utils.ReCaptchaV2;
 using privoda.ViewModels;
@@ -15,12 +16,12 @@ namespace privoda.Controllers
     public class HomeController : Controller
     {
         ModelLineContext db;
-        IOptions<Config> config;
+        private readonly EmailService _emailService;
 
-        public HomeController(ModelLineContext context, IOptions<Config> config)
+        public HomeController(ModelLineContext context, EmailService emailService)
         {
             db = context;
-            this.config = config;
+            _emailService = emailService;
         }
 
         public IActionResult Index()
@@ -38,8 +39,7 @@ namespace privoda.Controllers
         public IActionResult Library()
         {
             const string LIBRARY_DIRECTORY_NAME = "Библиотека";
-            FileUtil fu = new FileUtil();
-            return View(fu.getLibraryFileNames(LIBRARY_DIRECTORY_NAME));
+            return View(FileUtil.GetLibraryFileNames(LIBRARY_DIRECTORY_NAME));
         }
 
         public IActionResult Order(string name, string org, string post, string email, string phone, int lineId)
@@ -51,8 +51,7 @@ namespace privoda.Controllers
                 return RedirectToAction("Index");
             }
             ModelLine line = db.ModelLines.FirstOrDefault(p => p.Id == lineId);
-            Email emailUtil = new Email(config.Value);
-            emailUtil.sendOrder(name, org, post, email, phone, line);
+            _emailService.SendOrder(name, org, post, email, phone, line);
             return RedirectToAction("SuccessOrder", new { name = line.Name });
         }
 
@@ -71,8 +70,7 @@ namespace privoda.Controllers
             {
                 return RedirectToAction("Index");
             }
-            Email emailUtil = new Email(config.Value);
-            emailUtil.sendSelect(normal, hard, workSequences, inputOrganization, power, current, speed, cos, problem, email);
+            _emailService.SendSelect(normal, hard, workSequences, inputOrganization, power, current, speed, cos, problem, email);
             return RedirectToAction("SuccessSelect");
         }
 
@@ -86,8 +84,7 @@ namespace privoda.Controllers
         {
             ModelLine line = db.ModelLines.FirstOrDefault(p => p.Id == ID);
             Description description = db.Descriptions.FirstOrDefault(p => p.LineId == ID);
-            FileUtil fu = new FileUtil();
-            ViewBag.Documents = fu.getLibraryFileNames(line.Name);
+            ViewBag.Documents = FileUtil.GetLibraryFileNames(line.Name);
             LineViewModel lvm = new LineViewModel { Line = line, Description = description };
 
             return View(lvm);

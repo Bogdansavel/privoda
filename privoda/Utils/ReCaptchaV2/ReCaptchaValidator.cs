@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace privoda.Utils.ReCaptchaV2
 {
-    public class ReCaptchaValidator
+    public static class ReCaptchaValidator
     {
         private const string SECRET_KEY = "6Lde1r4UAAAAABDVa2a7y7Pz9G6s7ocw9F4djvif";
 
@@ -18,21 +18,23 @@ namespace privoda.Utils.ReCaptchaV2
                 return new ReCaptchaValidationResult() { Success = false };
             }
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://www.google.com");
+            using (var client = new HttpClient() { BaseAddress = new Uri("https://www.google.com")})
+            {
+                var values = new List<KeyValuePair<string, string>>();
+                values.Add(new KeyValuePair<string, string>("secret", SECRET_KEY));
+                values.Add(new KeyValuePair<string, string>("response", captchaResponse));
 
-            var values = new List<KeyValuePair<string, string>>();
-            values.Add(new KeyValuePair<string, string>("secret", SECRET_KEY));
-            values.Add(new KeyValuePair<string, string>("response", captchaResponse));
-            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+                using (var content = new FormUrlEncodedContent(values))
+                {
+                    HttpResponseMessage response = client.PostAsync("/recaptcha/api/siteverify", content).Result;
 
-            HttpResponseMessage response = client.PostAsync("/recaptcha/api/siteverify", content).Result;
+                string verificationResponse = response.Content.ReadAsStringAsync().Result;
 
-            string verificationResponse = response.Content.ReadAsStringAsync().Result;
+                var verificationResult = JsonConvert.DeserializeObject<ReCaptchaValidationResult>(verificationResponse);
 
-            var verificationResult = JsonConvert.DeserializeObject<ReCaptchaValidationResult>(verificationResponse);
-
-            return verificationResult;
+                return verificationResult;
+                }
+            }
         }
     }
 }

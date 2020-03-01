@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using privoda.Models;
 using Microsoft.EntityFrameworkCore;
+using privoda.Utils;
+using privoda.Services;
 
 namespace privoda
 {
@@ -30,12 +32,10 @@ namespace privoda
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddTransient<EmailService>();
 
             // Add functionality to inject IOptions<T>
             services.AddOptions();
-
-            // Add our Config object so it can be injected
-            services.Configure<Config>(Configuration.GetSection("Config"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

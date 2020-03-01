@@ -14,12 +14,12 @@ namespace privoda.Models
         public string Areas { get; set; }
         public string Big { get; set; }
 
-        private static char delimiter = '*'; 
+        private static char delimiter = '*';
 
-        public string[] getShortVersionOfBigDesc()
+        public string[] GetShortVersionOfBig()
         {
-            string[] big = getBigList();
-            string[] shortVersionOfBig = { "", "", "", "" };
+            var big = GetBigList();
+            var shortVersionOfBig = new string[4];
             if (big.Length < 4)
             {
                 return big;
@@ -31,58 +31,58 @@ namespace privoda.Models
             }
         }
 
-        public IEnumerable<string> getRestOfBigDesc()
+        public IEnumerable<string> GetRestOfBig()
         {
-            List<string> big = new List<string>();
-            string[] list = getBigList();
-            for (int i = 4; i < list.Length; i++)
+            var big = GetBigList();
+            var restOfBig = new List<string>();
+            for (int i = 4; i < big.Length; i++)
             {
-                big.Add(list[i]);
+                restOfBig.Add(big[i]);
             }
             return big;
         }
 
-        public string[] getAverageList()
+        public string[] GetAverageList()
         {
             return Average.Split(delimiter);
         }
 
-        public string[] getAreasList()
+        public string[] GetAreasList()
         {
             return Areas.Split(delimiter);
         }
 
-        public string[] getBigList()
+        public string[] GetBigList()
         {
             return Big.Split(delimiter);
         }
 
-        public string[] getMiniAverageList()
+        public string[] GetMiniAverageList()
         {
-            string[] avg = getAverageList();
-            string[] avg2 = { "", "", "", ""};
+            var avg = GetAverageList();
+            var miniAvg = new string[4];
             if (avg.Length < 4)
             {
                 return avg;
             } else
             {
-                Array.Copy(avg, avg2, 4);
-                return avg2;
+                Array.Copy(avg, miniAvg, 4);
+                return miniAvg;
             }
         }
 
-        public string[] getMiniAreasList()
+        public string[] GetMiniAreasList()
         {
-            string[] avg = getAreasList();
-            string[] avg2 = { "", "", "", "" };
-            if (avg.Length < 4)
+            string[] areas = GetAreasList();
+            string[] miniAreas = new string[4];
+            if (areas.Length < 4)
             {
-                return avg;
+                return areas;
             }
             else
             {
-                Array.Copy(avg, avg2, 4);
-                return avg2;
+                Array.Copy(areas, miniAreas, 4);
+                return miniAreas;
             }
         }
     }

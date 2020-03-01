@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace privoda.Utils
 {
-    public class FileUtil
+    public static class FileUtil
     {
 
-        public List<String> getLibraryFileNames(string dirName)
+        public static IEnumerable<string> GetLibraryFileNames(string dirName)
         {
-            DirectoryInfo d = new DirectoryInfo(@"wwwroot/documents/" + dirName);
-            FileInfo[] Files = d.GetFiles();
-            List<String> fileNames = new List<String>();
+            var directory = new DirectoryInfo(@"wwwroot/documents/" + dirName);
+            var Files = directory.GetFiles();
+            var fileNames = new List<string>();
             foreach (FileInfo file in Files)
             {
                 fileNames.Add(file.Name);

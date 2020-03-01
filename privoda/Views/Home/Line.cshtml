@@ -18,12 +18,12 @@
                         <p class="text-left">
                             @Model.Description.Small<br>
                         </p>
-                        @foreach (string s in Model.Description.getShortVersionOfBigDesc())
+                        @foreach (string s in Model.Description.GetShortVersionOfBig())
                         {
                             <p class="features text-left">@s</p>
                         }
                         <span id="more">
-                            @foreach (string s in Model.Description.getRestOfBigDesc())
+                            @foreach (string s in Model.Description.GetRestOfBig())
                             {
                                 <p class="features text-left">@s</p>
                             }
@@ -89,7 +89,7 @@
                         Области применения<br>
                     </p>
                     <ul>
-                        @foreach (string s in Model.Description.getAreasList())
+                        @foreach (string s in Model.Description.GetAreasList())
                         {
                             <li class="features">@s</li>
                         }
