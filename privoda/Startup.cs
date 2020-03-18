@@ -8,6 +8,8 @@ using privoda.Models;
 using Microsoft.EntityFrameworkCore;
 using privoda.Utils;
 using privoda.Services;
+using privoda.Contracts.Services;
+using privoda.Contracts.Repositories;
 
 namespace privoda
 {
@@ -33,6 +35,13 @@ namespace privoda
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<EmailService>();
+            services.AddTransient<IService<ModelLine>, Service<ModelLine>>();
+            services.AddTransient<IService<LineType>, Service<LineType>>();
+            services.AddTransient<IService<Description>, Service<Description>>();
+
+            services.AddTransient<IRepository<ModelLine>, Repository<ModelLine>>();
+            services.AddTransient<IRepository<LineType>, Repository<LineType>>();
+            services.AddTransient<IRepository<Description>, Repository<Description>>();
 
             // Add functionality to inject IOptions<T>
             services.AddOptions();

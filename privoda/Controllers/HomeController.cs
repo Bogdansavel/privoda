@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using privoda.Contracts.Services;
 using privoda.Models;
 using privoda.Services;
 using privoda.Utils;
@@ -15,24 +16,40 @@ namespace privoda.Controllers
 {
     public class HomeController : Controller
     {
-        ModelLineContext db;
+        //ModelLineContext db;
         private readonly EmailService _emailService;
+        private readonly IService<ModelLine> _modelLineService;
+        private readonly IService<LineType> _lineTypeService;
+        private readonly IService<Description> _descriptionService;
 
-        public HomeController(ModelLineContext context, EmailService emailService)
+        public HomeController(ModelLineContext context, EmailService emailService, IService<ModelLine> modelLineService, IService<LineType> lineTypeService, IService<Description> descriptionService)
         {
-            db = context;
+            //db = context;
+            _modelLineService = modelLineService;
+            _lineTypeService = lineTypeService;
+            _descriptionService = descriptionService;
             _emailService = emailService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IndexViewModel ivm = new IndexViewModel { ModelLines = db.ModelLines.ToList(), LineTypes = db.LineTypes.ToList(), Descriptions = db.Descriptions.ToList() };
+            IndexViewModel ivm = new IndexViewModel 
+            { 
+                ModelLines = await _modelLineService.GetManyAsync(), 
+                LineTypes = await _lineTypeService.GetManyAsync(), 
+                Descriptions = await _descriptionService.GetManyAsync() 
+            };
             return View(ivm);
         }
 
-        public IActionResult Lines()
+        public async Task<IActionResult> Lines()
         {
-            IndexViewModel ivm = new IndexViewModel { ModelLines = db.ModelLines.ToList(), LineTypes = db.LineTypes.ToList(), Descriptions = db.Descriptions.ToList() };
+            IndexViewModel ivm = new IndexViewModel
+            {
+                ModelLines = await _modelLineService.GetManyAsync(),
+                LineTypes = await _lineTypeService.GetManyAsync(),
+                Descriptions = await _descriptionService.GetManyAsync()
+            };
             return View(ivm);
         }
 
@@ -42,7 +59,7 @@ namespace privoda.Controllers
             return View(FileUtil.GetLibraryFileNames(LIBRARY_DIRECTORY_NAME));
         }
 
-        public IActionResult Order(string name, string org, string post, string email, string phone, int lineId)
+        public async Task<IActionResult> Order(string name, string org, string post, string email, string phone, int lineId)
         {
             string captchaResponse = HttpContext.Request.Form["g-Recaptcha-Response"];
             ReCaptchaValidationResult result = ReCaptchaValidator.IsValid(captchaResponse);
@@ -50,7 +67,7 @@ namespace privoda.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ModelLine line = db.ModelLines.FirstOrDefault(p => p.Id == lineId);
+            ModelLine line = await _modelLineService.GetAsync(p => p.Id == lineId);
             _emailService.SendOrder(name, org, post, email, phone, line);
             return RedirectToAction("SuccessOrder", new { name = line.Name });
         }
@@ -80,12 +97,16 @@ namespace privoda.Controllers
         }
 
         [HttpGet]
-        public IActionResult Line(int ID)
+        public async Task<IActionResult> Line(int ID)
         {
-            ModelLine line = db.ModelLines.FirstOrDefault(p => p.Id == ID);
-            Description description = db.Descriptions.FirstOrDefault(p => p.LineId == ID);
+            ModelLine line = await _modelLineService.GetAsync(p => p.Id == ID);
+            Description description = await _descriptionService.GetAsync(p => p.LineId == ID);
             ViewBag.Documents = FileUtil.GetLibraryFileNames(line.Name);
-            LineViewModel lvm = new LineViewModel { Line = line, Description = description };
+            LineViewModel lvm = new LineViewModel
+            {
+                Line = line,
+                Description = description 
+            };
 
             return View(lvm);
         }
