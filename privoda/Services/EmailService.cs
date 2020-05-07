@@ -102,5 +102,46 @@ namespace privoda.Services
             }
         }
 
+        public void SendConfigurationRefs(string email, string phone,
+            string teSys1FullRef, string teSys1CircuitBreakersRef, string teSys1CoilRef, string teSys1ContactorRef,
+            string teSys2FullRef, string teSys2CircuitBreakersRef, string teSys2CoilRef, string teSys2ContactorRef)
+        {
+            var emailConfig = _config.GetSection("Email");
+            var adminEmail = emailConfig["AdminEmail"];
+            var emailForSelect = emailConfig["EmailForSelect"];
+            var emailPassword = emailConfig["EmailPassword"];
+
+            var to = new MailAddress(emailForSelect);
+            var from = new MailAddress(adminEmail);
+
+            using (var m = new MailMessage(from, to))
+            {
+                using (var smtp = new SmtpClient("smtp.yandex.ru", 587))
+                {
+                    m.Subject = "Запрос комерческого предложения через сайт privoda.by";
+                    m.Body =
+                        "Пускатели прямого непосредственного пуска.\n" +
+                        "\nКоординация типа 1." +
+                        "\nАвтоматический выключатель электродвигателя: " + teSys1CircuitBreakersRef +
+                        "\nКонтактор: " + teSys1ContactorRef +
+                        "\nКатушка: " + teSys1CoilRef +
+                        "\nПолный референс: " + teSys1FullRef +
+                        "\n\nКоординация типа 2." +
+                        "\nАвтоматический выключатель электродвигателя: " + teSys2CircuitBreakersRef +
+                        "\nКонтактор: " + teSys2ContactorRef +
+                        "\nКатушка: " + teSys2CoilRef +
+                        "\nПолный референс: " + teSys2FullRef;
+                    m.Body += "\n\nКонтакты: " +
+                        "\nE-mail: " + email;
+                    if (!string.IsNullOrEmpty(phone))
+                    {
+                        m.Body += "\nТелефон: " + phone;
+                    }
+                    smtp.Credentials = new NetworkCredential(emailForSelect, emailPassword);
+                    smtp.EnableSsl = true;
+                    smtp.Send(m);
+                }
+            }
+        }
     }
 }

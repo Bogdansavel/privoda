@@ -1,0 +1,183 @@
+﻿@using privoda.ViewModels
+@model TeSysConfiguratorViewModel
+@{
+    ViewData["Title"] = "Конфигуратор пускателей";
+}
+
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 2%">
+            <h1>Конфигуратор пускателей прямого непосредственного пуска</h1>
+        </div>
+        <form method="get" action="/TeSysConfigurator/Configurate">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Power">кВт</label>
+                    <select class="form-control" id="Power" name="Power" onchange="powerSelectOnChange()">
+                        @foreach (PowerAndCurrent powerAndCurrent in Model.PowerAndCurrentList)
+                        {
+                            <option value="@powerAndCurrent.Power">@powerAndCurrent.Power</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Current">А</label>
+                    <select class="form-control" id="Current" name="Current" onchange="currentSelectOnChange()">
+                        @foreach (PowerAndCurrent powerAndCurrent in Model.PowerAndCurrentList)
+                        {
+                            <option value="@powerAndCurrent.Current">@powerAndCurrent.Current</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="CurrentType">Тип тока</label>
+                    <select class="form-control" id="CurrentType" name="CurrentType">
+                        @foreach (CurrentType currentType in Model.CurrentTypes)
+                        {
+                            <option value="@currentType.Id">@currentType.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Voltage">Вольтаж</label>
+                    <select class="form-control" id="Voltage" name="Voltage">
+                        @foreach (int voltage in Model.VoltageList)
+                        {
+                            <option value="@voltage">@voltage</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="container">
+                <button type="submit" class="btn btn-primary">Получить референсы</button>
+            </div>
+        </form>
+        <div class="row" style="margin: 1%">
+            <div class="col-md-6">
+                <p><b>Координация типа 1</b></p>
+                <img src="~/images/configurator/type1.jpg" />
+            </div>
+            <div class="col-md-6">
+                <p><b>Координация типа 2</b></p>
+                <img src="~/images/configurator/type2.jpg" />
+            </div>
+        </div>
+        @if (Model.TeSysType1 != null)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Автоматический выключатель электродвигателя</th>
+                                <th scope="col">Контактор</th>
+                                <th scope="col">Катушка</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.TeSysType2.CircuitBreakersInLine</td>
+                                <td>@Model.TeSysType1.Contactor.Reference</td>
+                                @if (Model.TeSysType1.Coil != null)
+                                {
+                                    <td>@Model.TeSysType1.Coil.Reference</td>
+                                }
+                                else
+                                {
+                                    <td>-</td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @if (Model.TeSysType2 != null)
+                {
+                    <div class="col-md-6">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Автоматический выключатель электродвигателя</th>
+                                    <th scope="col">Контактор</th>
+                                    <th scope="col">Катушка</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@Model.TeSysType2.CircuitBreakersInLine</td>
+                                    <td>@Model.TeSysType2.Contactor.Reference</td>
+                                    @if (Model.TeSysType2.Coil != null)
+                                    {
+                                        <td>@Model.TeSysType2.Coil.Reference</td>
+                                    }
+                                    else
+                                    {
+                                        <td>-</td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        }
+        @if (Model.TeSysType1 != null || Model.TeSysType2 != null)
+        {
+            <div class="row">
+                <div class="text-center">
+                    <a class="btn btn-info btn-primary buy-btn" data-toggle="modal" data-target="#teSysModal">Получить контрольное предложение</a>
+                </div>
+                <!-- Modal -->
+                <div id="teSysModal" class="modal fade text-left" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div style="text-align: left">Контакты для оформления кп</div>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form" asp-area="" asp-controller="TeSysConfigurator" asp-action="SendConfigurationRefs">
+                                    <div class="form-group">
+                                        <label for="inputName">Электронная почта</label>
+                                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputStatus">Телефон</label>
+                                        <input type="tel" class="form-control" id="inputStatus" name="phone" placeholder="Введите ваш контактный номер телефона" />
+                                    </div>
+                                    <div class="g-recaptcha"
+                                         data-callback="orderRecaptchaCallback"
+                                         data-sitekey="6Lde1r4UAAAAALjc45fRCMTWcQd7euopVl0KSxfU">
+                                    </div>
+                                    <div class="text-right">
+                                        <input type="hidden" name="teSys1FullRef" value="@Model.TeSysType1.FullReference">
+                                        <input type="hidden" name="teSys1CircuitBreakersRef" value="@Model.TeSysType1.CircuitBreakersInLine">
+                                        <input type="hidden" name="teSys1CoilRef" value="@Model.TeSysType1.Coil.Reference" />
+                                        <input type="hidden" name="teSys1ContactorRef" value="@Model.TeSysType1.Contactor.Reference" />
+
+                                        <input type="hidden" name="teSys2FullRef" value="@Model.TeSysType2.FullReference">
+                                        <input type="hidden" name="teSys2CircuitBreakersRef" value="@Model.TeSysType2.CircuitBreakersInLine">
+                                        <input type="hidden" name="teSys2CoilRef" value="@Model.TeSysType2.Coil.Reference" />
+                                        <input type="hidden" name="teSys2ContactorRef" value="@Model.TeSysType2.Contactor.Reference" />
+                                        <button id="orderSubmitBtn" type="submit" class="btn btn-default" disabled>Получить КП</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/configuratorScripts.js"></script>
+</body>
+</html>

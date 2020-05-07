@@ -16,15 +16,14 @@ namespace privoda.Controllers
 {
     public class HomeController : Controller
     {
-        //ModelLineContext db;
         private readonly EmailService _emailService;
         private readonly IService<ModelLine> _modelLineService;
         private readonly IService<LineType> _lineTypeService;
         private readonly IService<Description> _descriptionService;
 
-        public HomeController(ModelLineContext context, EmailService emailService, IService<ModelLine> modelLineService, IService<LineType> lineTypeService, IService<Description> descriptionService)
+        public HomeController(EmailService emailService, IService<ModelLine> modelLineService, 
+            IService<LineType> lineTypeService, IService<Description> descriptionService)
         {
-            //db = context;
             _modelLineService = modelLineService;
             _lineTypeService = lineTypeService;
             _descriptionService = descriptionService;

@@ -11,7 +11,7 @@ namespace privoda
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly ModelLineContext _dbContext;
+        private readonly PrivodaDbContext _dbContext;
 
         /// <summary>
         /// List of navigation properties that should be included
@@ -23,7 +23,7 @@ namespace privoda
         /// </summary>
         /// <param name="dbContext">db context</param>
         /// <param name="includes">list of navigation properties that should be included</param>
-        public Repository(ModelLineContext dbContext, string[] includes = null)
+        public Repository(PrivodaDbContext dbContext, string[] includes = null)
         {
             _dbContext = dbContext;
             Includes = includes?.Length > 0 ? includes.ToList() : null;
