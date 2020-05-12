@@ -40,7 +40,7 @@
                     <select class="form-control" id="CurrentType" name="CurrentType">
                         @foreach (CurrentType currentType in Model.CurrentTypes)
                         {
-                            <option value="@currentType.Id">@currentType.Name</option>
+                            <option value="@currentType.Name">@currentType.Name</option>
                         }
                     </select>
                 </div>
@@ -158,12 +158,18 @@
                                     <div class="text-right">
                                         <input type="hidden" name="teSys1FullRef" value="@Model.TeSysType1.FullReference">
                                         <input type="hidden" name="teSys1CircuitBreakersRef" value="@Model.TeSysType1.CircuitBreakersInLine">
-                                        <input type="hidden" name="teSys1CoilRef" value="@Model.TeSysType1.Coil.Reference" />
+                                        @if (Model.TeSysType1.Coil != null)
+                                        {
+                                            <input type="hidden" name="teSys1CoilRef" value="@Model.TeSysType1.Coil.Reference" />
+                                        }
                                         <input type="hidden" name="teSys1ContactorRef" value="@Model.TeSysType1.Contactor.Reference" />
 
                                         <input type="hidden" name="teSys2FullRef" value="@Model.TeSysType2.FullReference">
                                         <input type="hidden" name="teSys2CircuitBreakersRef" value="@Model.TeSysType2.CircuitBreakersInLine">
-                                        <input type="hidden" name="teSys2CoilRef" value="@Model.TeSysType2.Coil.Reference" />
+                                        @if (Model.TeSysType2.Coil != null)
+                                        {
+                                            <input type="hidden" name="teSys1CoilRef" value="@Model.TeSysType2.Coil.Reference" />
+                                        }
                                         <input type="hidden" name="teSys2ContactorRef" value="@Model.TeSysType2.Contactor.Reference" />
                                         <button id="orderSubmitBtn" type="submit" class="btn btn-default" disabled>Получить КП</button>
                                     </div>
