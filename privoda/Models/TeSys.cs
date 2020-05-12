@@ -25,10 +25,10 @@ namespace privoda.Models
             {
                 if (CircuitBreakers.Count() == 1)
                 {
-                    return CircuitBreakers.First().Reference + Contactor.Reference + Coil.Reference;
+                    return CircuitBreakers.First().Reference + Contactor.Reference + Coil?.Reference;
                 }
 
-                return "|" + CircuitBreakersInLine + "|" + Contactor.Reference + Coil.Reference;
+                return "|" + CircuitBreakersInLine + "|" + Contactor.Reference + Coil?.Reference;
             }
         }
     }
