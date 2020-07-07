@@ -1,3 +1,8 @@
+function onSubmit(){
+    ("select[id='Current'] option:selected").val($("select[id='Current'] option:selected").val().replace('.', '1'));
+    ("select[id='Power'] option:selected").val($("select[id='Power'] option:selected").val().replace(',', '.'));
+}
+
 function currentSelectOnChange() {
     index = $("select[id='Current'] option:selected").index();
     document.getElementById(
