@@ -307,6 +307,14 @@ footer p {
 	width: 60%;
 }
 
+.logo-text-second {
+	color: #e6e6e6;
+}
+
+.logo-text-first {
+	color: #0b7038;
+}
+
 svg #MessageBox1 {
     animation: showMessage1 42s infinite;
     opacity: 0;

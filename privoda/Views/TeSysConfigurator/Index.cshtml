@@ -13,14 +13,14 @@
         <div style="text-align: center; margin-bottom: 2%">
             <h1>Конфигуратор пускателей прямого непосредственного пуска</h1>
         </div>
-        <form method="get" action="/TeSysConfigurator/Configurate">
+        <form onsubmit="onSubmit()" method="get" action="/TeSysConfigurator/Configurate">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="Power">кВт</label>
                     <select class="form-control" id="Power" name="Power" onchange="powerSelectOnChange()">
                         @foreach (PowerAndCurrent powerAndCurrent in Model.PowerAndCurrentList)
                         {
-                            <option value="@powerAndCurrent.Power">@powerAndCurrent.Power</option>
+                            <option typeof="number" value=@powerAndCurrent.Power>@powerAndCurrent.Power</option>
                         }
                     </select>
                 </div>
@@ -29,7 +29,7 @@
                     <select class="form-control" id="Current" name="Current" onchange="currentSelectOnChange()">
                         @foreach (PowerAndCurrent powerAndCurrent in Model.PowerAndCurrentList)
                         {
-                            <option value="@powerAndCurrent.Current">@powerAndCurrent.Current</option>
+                            <option typeof="number" value=@powerAndCurrent.Current>@powerAndCurrent.Current</option>
                         }
                     </select>
                 </div>
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="container">
-                <button type="submit" class="btn btn-primary">Получить референсы</button>
+                <button id="submit" type="submit" class="btn btn-primary">Получить референсы</button>
             </div>
         </form>
         <div class="row" style="margin: 1%">
