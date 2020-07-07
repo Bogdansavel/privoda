@@ -11,6 +11,7 @@ using privoda.Services;
 using privoda.Contracts.Services;
 using privoda.Contracts.Repositories;
 using privoda.Data.Repositories;
+using System.Globalization;
 
 namespace privoda
 {
@@ -76,6 +77,12 @@ namespace privoda
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            var cultureInfo = new CultureInfo("en-US");
+            cultureInfo.NumberFormat.CurrencySymbol = "€";
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseMvc(routes =>
             {
