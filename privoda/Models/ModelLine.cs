@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace privoda.Models
 {
+    [Table("ModelLines", Schema = "dbo")]
     public class ModelLine
     {
         public int Id { get; set; }

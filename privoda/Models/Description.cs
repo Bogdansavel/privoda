@@ -14,49 +14,75 @@ namespace privoda.Models
         public string Areas { get; set; }
         public string Big { get; set; }
 
-        private static char delimiter = '*'; 
+        private static char delimiter = '*';
 
-        public string[] getAverageList()
+        public string[] GetShortVersionOfBig()
+        {
+            var big = GetBigList();
+            var shortVersionOfBig = new string[4];
+            if (big.Length < 4)
+            {
+                return big;
+            }
+            else
+            {
+                Array.Copy(big, shortVersionOfBig, 4);
+                return shortVersionOfBig;
+            }
+        }
+
+        public IEnumerable<string> GetRestOfBig()
+        {
+            var big = GetBigList();
+            var restOfBig = new List<string>();
+            for (int i = 4; i < big.Length; i++)
+            {
+                restOfBig.Add(big[i]);
+            }
+            return big;
+        }
+
+        public string[] GetAverageList()
         {
             return Average.Split(delimiter);
         }
 
-        public string[] getAreasList()
+        public string[] GetAreasList()
         {
             return Areas.Split(delimiter);
         }
 
-        public string[] getBigList()
+        public string[] GetBigList()
         {
             return Big.Split(delimiter);
         }
 
-        public string[] getMiniAverageList()
+        public string[] GetMiniAverageList()
         {
-            string[] avg = getAverageList();
-            string[] avg2 = { "", "", "", ""};
+            var avg = GetAverageList();
+            var miniAvg = new string[4];
             if (avg.Length < 4)
             {
                 return avg;
             } else
             {
-                Array.Copy(avg, avg2, 4);
-                return avg2;
+                Array.Copy(avg, miniAvg, 4);
+                return miniAvg;
             }
         }
 
-        public string[] getMiniAreasList()
+        public string[] GetMiniAreasList()
         {
-            string[] avg = getAreasList();
-            string[] avg2 = { "", "", "", "" };
-            if (avg.Length < 4)
+            string[] areas = GetAreasList();
+            string[] miniAreas = new string[4];
+            if (areas.Length < 4)
             {
-                return avg;
+                return areas;
             }
             else
             {
-                Array.Copy(avg, avg2, 4);
-                return avg2;
+                Array.Copy(areas, miniAreas, 4);
+                return miniAreas;
             }
         }
     }
