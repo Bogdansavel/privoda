@@ -27,11 +27,12 @@ namespace privoda.Services
             var emailForOrders = emailConfig["EmailForOrder"];
             var emailPassword = emailConfig["EmailPassword"];
 
-            var adress = new MailAddress(adminEmail);
+            var to = new MailAddress(emailForOrders);
+            var from = new MailAddress(adminEmail);
 
-            using (var m = new MailMessage(adress, adress))
+            using (var m = new MailMessage(from, to))
             {
-                using (var smtp = new SmtpClient("smtp.yandex.ru", 587))
+                using (var smtp = new SmtpClient("smtp.yandex.com.tr", 587))
                 {
                     m.Subject = "Заказ через сайт privoda.by";
                     m.Body = "Заказ " + line.Name + ". \n\nЗаказчик: " + name + "\nОрганизация: " + org;
@@ -40,7 +41,7 @@ namespace privoda.Services
                         m.Body += "\nДолжность: " + post;
                     }
                     m.Body += "\nЭлектронная почта: " + email + "\nТелефон: " + phone + ";";
-                    smtp.Credentials = new NetworkCredential(emailForOrders, emailPassword);
+                    smtp.Credentials = new NetworkCredential(adminEmail, emailPassword);
                     smtp.EnableSsl = true;
                     smtp.Send(m);
                 }

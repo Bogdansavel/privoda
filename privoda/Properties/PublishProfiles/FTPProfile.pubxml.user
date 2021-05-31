@@ -6,43 +6,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAg2D5RLlkyEG2vphetQcmvwAAAAACAAAAAAAQZgAAAAEAACAAAACOxisu4ajBuO88L17yvZzWxgTYzaonbNgztR8XB6bqXQAAAAAOgAAAAAIAACAAAABdCcMA4JR/KmHMauqkTJglwBVOLPThIPoIHnCFpvsYQiAAAADudbePC3o2XjtnVvDxPp0V+YMmBihBfN5dOVpNkJX8p0AAAAB0cMiOQECErwjIaULtHMApPz1aTCZq+ulRPxhj7m5hFuL02E1IIQUw3gqLS0Jdg6pQAhNN47CjDgI9Pui692Gi</EncryptedPassword>
-    <_PublishTargetUrl>ftp://inverter.by/www.inverter.by</_PublishTargetUrl>
-    <History>True|2021-04-14T13:18:32.9312286Z;True|2021-04-13T15:09:07.4898387+03:00;False|2021-04-13T14:48:38.4135943+03:00;False|2021-04-13T13:42:38.1339233+03:00;False|2021-04-13T13:42:04.7123050+03:00;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2ky8BxnAx0e0yu3K+p2ongAAAAACAAAAAAAQZgAAAAEAACAAAAAQqe0RctwE1fGcbpBrSFXVE+ppVIfyd0pU+YwQPqSgPQAAAAAOgAAAAAIAACAAAAANb4GKFlVaRwOZ0BSixGC6+hCwaM3qzfLaTM47ia8MYCAAAADxljMHqI60PUzVHGeomUIuIR9oln64cpUb1TtyJMVBqkAAAABYNypxnyWgrA/CDC9NKQMXejvmtg3wf9hsrYAO7MIvRV/RZn/Tk06ChxzOKRUF0t1Ni2IvXbr/h1L1XA6+pZsw</EncryptedPassword>
+    <_PublishTargetUrl>ftp://31.31.196.160</_PublishTargetUrl>
+    <History>False|2021-04-13T10:35:12.4700781Z;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
-      <publishTime>04/14/2021 16:11:05</publishTime>
+      <publishTime>03/21/2020 16:49:19</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>04/14/2021 16:10:59</publishTime>
+      <publishTime>03/21/2020 16:49:26</publishTime>
     </File>
     <File Include="dotnet-aspnet-codegenerator-design.dll">
       <publishTime>09/24/2019 19:57:52</publishTime>
-    </File>
-    <File Include="log4net.dll">
-      <publishTime>10/19/2020 06:40:12</publishTime>
     </File>
     <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
       <publishTime>04/30/2018 16:29:02</publishTime>
     </File>
     <File Include="Microsoft.CodeAnalysis.Workspaces.dll">
       <publishTime>04/30/2018 16:29:04</publishTime>
-    </File>
-    <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
-      <publishTime>10/11/2019 22:28:10</publishTime>
-    </File>
-    <File Include="Microsoft.EntityFrameworkCore.Design.dll">
-      <publishTime>10/11/2019 22:26:02</publishTime>
-    </File>
-    <File Include="Microsoft.EntityFrameworkCore.dll">
-      <publishTime>10/11/2019 22:26:00</publishTime>
-    </File>
-    <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
-      <publishTime>10/11/2019 22:24:58</publishTime>
-    </File>
-    <File Include="Microsoft.EntityFrameworkCore.SqlServer.dll">
-      <publishTime>10/11/2019 22:28:58</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
       <publishTime>09/24/2019 19:57:20</publishTime>
@@ -69,22 +51,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2018 21:27:10</publishTime>
     </File>
     <File Include="privoda.deps.json">
-      <publishTime>04/14/2021 16:11:31</publishTime>
+      <publishTime>08/05/2020 20:39:00</publishTime>
     </File>
     <File Include="privoda.dll">
-      <publishTime>04/14/2021 16:11:30</publishTime>
+      <publishTime>08/05/2020 20:38:58</publishTime>
     </File>
     <File Include="privoda.pdb">
-      <publishTime>04/14/2021 16:11:30</publishTime>
+      <publishTime>08/05/2020 20:38:58</publishTime>
     </File>
     <File Include="privoda.runtimeconfig.json">
-      <publishTime>04/13/2021 13:35:09</publishTime>
-    </File>
-    <File Include="privoda.Views.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="privoda.Views.pdb">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>08/05/2020 20:24:01</publishTime>
     </File>
     <File Include="refs/Microsoft.AspNetCore.Antiforgery.dll">
       <publishTime>06/07/2018 00:26:56</publishTime>
@@ -371,8 +347,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="refs/Microsoft.DotNet.PlatformAbstractions.dll">
       <publishTime>05/15/2018 21:01:34</publishTime>
     </File>
+    <File Include="refs/Microsoft.EntityFrameworkCore.Abstractions.dll">
+      <publishTime>06/07/2018 00:26:52</publishTime>
+    </File>
+    <File Include="refs/Microsoft.EntityFrameworkCore.Design.dll">
+      <publishTime>06/07/2018 00:26:58</publishTime>
+    </File>
+    <File Include="refs/Microsoft.EntityFrameworkCore.dll">
+      <publishTime>06/07/2018 00:26:56</publishTime>
+    </File>
     <File Include="refs/Microsoft.EntityFrameworkCore.InMemory.dll">
       <publishTime>06/07/2018 00:27:00</publishTime>
+    </File>
+    <File Include="refs/Microsoft.EntityFrameworkCore.Relational.dll">
+      <publishTime>06/07/2018 00:27:02</publishTime>
+    </File>
+    <File Include="refs/Microsoft.EntityFrameworkCore.SqlServer.dll">
+      <publishTime>06/07/2018 00:27:02</publishTime>
     </File>
     <File Include="refs/Microsoft.Extensions.Caching.Abstractions.dll">
       <publishTime>06/07/2018 00:27:02</publishTime>
@@ -545,6 +536,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="refs/Newtonsoft.Json.dll">
       <publishTime>03/24/2018 17:44:14</publishTime>
     </File>
+    <File Include="refs/Remotion.Linq.dll">
+      <publishTime>02/06/2018 22:25:00</publishTime>
+    </File>
     <File Include="refs/System.AppContext.dll">
       <publishTime>05/15/2018 14:08:04</publishTime>
     </File>
@@ -584,9 +578,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="refs/System.ComponentModel.TypeConverter.dll">
       <publishTime>05/15/2018 14:08:04</publishTime>
     </File>
-    <File Include="refs/System.Configuration.ConfigurationManager.dll">
-      <publishTime>05/15/2018 13:29:38</publishTime>
-    </File>
     <File Include="refs/System.Configuration.dll">
       <publishTime>05/15/2018 14:08:04</publishTime>
     </File>
@@ -609,6 +600,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2018 14:08:04</publishTime>
     </File>
     <File Include="refs/System.Diagnostics.Debug.dll">
+      <publishTime>05/15/2018 14:08:04</publishTime>
+    </File>
+    <File Include="refs/System.Diagnostics.DiagnosticSource.dll">
       <publishTime>05/15/2018 14:08:04</publishTime>
     </File>
     <File Include="refs/System.Diagnostics.FileVersionInfo.dll">
@@ -655,6 +649,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="refs/System.IdentityModel.Tokens.Jwt.dll">
       <publishTime>01/29/2018 08:47:12</publishTime>
+    </File>
+    <File Include="refs/System.Interactive.Async.dll">
+      <publishTime>11/21/2016 14:05:54</publishTime>
     </File>
     <File Include="refs/System.IO.Compression.Brotli.dll">
       <publishTime>05/15/2018 14:08:04</publishTime>
@@ -998,12 +995,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="refs/WindowsBase.dll">
       <publishTime>05/15/2018 14:08:04</publishTime>
     </File>
-    <File Include="Remotion.Linq.dll">
-      <publishTime>02/06/2018 22:25:00</publishTime>
-    </File>
-    <File Include="runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll">
-      <publishTime>05/15/2018 13:29:44</publishTime>
-    </File>
     <File Include="System.Composition.AttributedModel.dll">
       <publishTime>11/05/2016 04:55:42</publishTime>
     </File>
@@ -1018,18 +1009,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="System.Composition.TypedParts.dll">
       <publishTime>11/05/2016 04:55:46</publishTime>
-    </File>
-    <File Include="System.Configuration.ConfigurationManager.dll">
-      <publishTime>05/15/2018 13:29:38</publishTime>
-    </File>
-    <File Include="System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>09/18/2018 19:38:16</publishTime>
-    </File>
-    <File Include="System.Interactive.Async.dll">
-      <publishTime>11/21/2016 14:05:54</publishTime>
-    </File>
-    <File Include="System.Security.Cryptography.ProtectedData.dll">
-      <publishTime>05/15/2018 13:29:44</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>06/16/2020 22:43:44</publishTime>
@@ -1077,7 +1056,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/12/2019 16:03:06</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>04/14/2021 16:11:31</publishTime>
+      <publishTime>08/05/2020 20:39:00</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
       <publishTime>01/13/2020 17:17:02</publishTime>
@@ -1283,9 +1262,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="wwwroot/images/delivery.psd">
       <publishTime>01/13/2020 17:17:03</publishTime>
     </File>
-    <File Include="wwwroot/images/delivery_2.png">
-      <publishTime>07/04/2019 15:01:03</publishTime>
-    </File>
     <File Include="wwwroot/images/LifeIsOn.png">
       <publishTime>01/13/2020 17:17:03</publishTime>
     </File>
@@ -1341,10 +1317,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/24/2020 17:03:43</publishTime>
     </File>
     <File Include="wwwroot/images/logo1.png">
-      <publishTime>08/05/2020 21:09:34</publishTime>
-    </File>
-    <File Include="wwwroot/images/logo1.psd">
-      <publishTime>08/05/2020 21:10:29</publishTime>
+      <publishTime>07/29/2020 16:02:22</publishTime>
     </File>
     <File Include="wwwroot/images/originals/delivery.png">
       <publishTime>01/13/2020 17:17:03</publishTime>
@@ -1361,35 +1334,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="wwwroot/images/programming.psd">
       <publishTime>01/13/2020 17:17:03</publishTime>
     </File>
-    <File Include="wwwroot/images/programming2.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="wwwroot/images/programming_2.png">
-      <publishTime>07/04/2019 14:59:45</publishTime>
-    </File>
-    <File Include="wwwroot/images/proramming.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="wwwroot/images/proramming.psd">
-      <publishTime>06/04/2019 15:53:57</publishTime>
-    </File>
     <File Include="wwwroot/images/SchemaWithLines.png">
       <publishTime>01/13/2020 17:17:07</publishTime>
-    </File>
-    <File Include="wwwroot/images/slide.psd">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="wwwroot/images/slide1.psd">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="wwwroot/images/slide_1.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="wwwroot/images/slide_2.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="wwwroot/images/slide_3.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/images/success.png">
       <publishTime>01/13/2020 17:17:03</publishTime>
@@ -1399,9 +1345,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="wwwroot/images/training.psd">
       <publishTime>01/13/2020 17:17:03</publishTime>
-    </File>
-    <File Include="wwwroot/images/training_2.png">
-      <publishTime>07/04/2019 15:00:26</publishTime>
     </File>
     <File Include="wwwroot/images/types/building.png">
       <publishTime>01/13/2020 17:17:03</publishTime>

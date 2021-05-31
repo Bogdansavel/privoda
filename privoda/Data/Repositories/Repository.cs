@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using log4net;
+using Microsoft.EntityFrameworkCore;
 using privoda.Contracts.Repositories;
 using privoda.Models;
 using System;
@@ -27,6 +28,11 @@ namespace privoda
         {
             _dbContext = dbContext;
             Includes = includes?.Length > 0 ? includes.ToList() : null;
+            var tableNames = _dbContext.Model.GetEntityTypes()
+            .Select(t => t.ClrType)
+            .Distinct()
+            .ToList();
+            
         }
 
         /// <inheritdoc />
